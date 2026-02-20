@@ -6,24 +6,36 @@ public class AppDbContext : DbContext {
  public AppDbContext(DbContextOptions<AppDbContext> options)
  : base(options) { }
 
- public DbSet<ServiceRequest> ServiceRequests => Set<ServiceRequest>();
+ public DbSet<Pokemon> Pokemons => Set<Pokemon>();
  protected override void OnModelCreating(ModelBuilder modelBuilder) {
               base.OnModelCreating(modelBuilder);
-                    modelBuilder.Entity<ServiceRequest>(entity => {
-                        entity.ToTable("ServiceRequests");
+                    modelBuilder.Entity<Pokemon>(entity => {
+                        entity.ToTable("Pokemons");
                         entity.HasKey(e => e.Id);
-                        entity.Property(e => e.Title)
+                        entity.Property(e => e.Name)
                               .IsRequired()
-                              .HasMaxLength(100);
-                       entity.Property(e => e.Description)
-                             .IsRequired()
-                             .HasMaxLength(500);
-                       entity.Property(e => e.Status)
+                              .HasMaxLength(30);
+                       entity.Property(e => e.Type)
+                             .HasConversion<string>() 
                              .IsRequired();
-                       entity.Property(e => e.CreatedAt)
-                             .HasDefaultValueSql("GETDATE()");
-                       entity.Property(e => e.CompletedAt)
+                       entity.Property(e => e.Type2)
+                             .HasConversion<string>() 
                              .IsRequired(false);
+                       entity.Property(e => e.SubEvolution)
+                             .HasMaxLength(30)
+                             .IsRequired(false);
+                       entity.Property(e => e.Evolution)
+                             .HasMaxLength(30)
+                             .IsRequired(false);
+                       entity.Property(e => e.MegaEvolution)
+                             .HasMaxLength(30)
+                             .IsRequired(false);
+                       entity.Property(e => e.Generation)
+                             .IsRequired();
+                       entity.Property(e => e.Region)
+                             .IsRequired();
+                       entity.Property(e => e.Image)
+                             .IsRequired();
               });
     }
 }

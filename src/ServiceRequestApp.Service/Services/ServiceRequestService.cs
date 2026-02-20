@@ -6,80 +6,84 @@ using ServiceRequestApp.Domain.Enums;
 
 namespace ServiceRequestApp.Service.Services;
 
-public class ServiceRequestService: IServiceRequestService{
- private readonly IServiceRequestRepository _repo;
+public class PokemonService : IPokemonService 
+{
+    private readonly IPokemonRepository _repo;
 
- public ServiceRequestService(
- IServiceRequestRepository repo) => _repo = repo;
+    public PokemonService(IPokemonRepository repo) => _repo = repo;
 
- public async Task<List<ServiceRequestDto>> GetAllAsync(){
-    var items = await _repo.GetAllAsync();
-    return items.Select(ToDto).ToList();
- }
+    public async Task<List<PokemonDto>> GetAllAsync()
+    {
+        var items = await _repo.GetAllAsync();
+        return items.Select(ToDto).ToList();
+    }
 
- public async Task<ServiceRequestDto?>
- GetByIdAsync(int id){
- var item = await _repo.GetByIdAsync(id);
- return item == null ? null : ToDto(item);
- }
+    public async Task<PokemonDto?> GetByIdAsync(int id)
+    {
+        var item = await _repo.GetByIdAsync(id);
+        return item == null ? null : ToDto(item);
+    }
 
-     public async Task<(bool ok, string error,
-        ServiceRequestDto? created)>
-        CreateAsync(CreateServiceRequestDto dto) {
-        var (ok, error) =
-            ServiceRequestValidators.Validate(dto);
+    public async Task<(bool ok, string error, PokemonDto? created)> CreateAsync(CreatePokemonDto dto) 
+    {
+        // On utilise le validateur spécifique aux Pokémon
+        var (ok, error) = PokemonValidators.Validate(dto);
         if (!ok) return (false, error, null);
 
-        var entity = new ServiceRequest
+        var entity = new Pokemon
         {
-            Title       = dto.Title.Trim(),
-            Description = dto.Description.Trim(),
-            Status      = RequestStatus.Open
-            // CreatedAt handled by SQL default
+            Name = dto.Name.Trim(),
+            Type = dto.Type,
+            Type2 = dto.Type2,
+            SubEvolution = dto.PreEvolution?.Trim(),
+            Evolution = dto.Evolution?.Trim(),
+            MegaEvolution = dto.MegaEvolution?.Trim(),
+            Region = dto.Region.Trim(),
+            Generation = dto.Generation,
+            Image = dto.Image.Trim()
         };
 
         var created = await _repo.AddAsync(entity);
         return (true, "", ToDto(created));
     }
 
-     public async Task<(bool ok, string error,ServiceRequestDto? updated)>
- UpdateAsync(int id, UpdateServiceRequestDto dto)  {
- var (ok, error) =
- ServiceRequestValidators.Validate(dto);
- if (!ok) return (false, error, null);
+    public async Task<(bool ok, string error, PokemonDto? updated)> UpdateAsync(int id, UpdatePokemonDto dto) 
+    {
+        var (ok, error) = PokemonValidators.Validate(dto);
+        if (!ok) return (false, error, null);
 
- var existing = await _repo.GetByIdAsync(id);
- if (existing == null)
- return (false, "Not found.", null);
+        var existing = await _repo.GetByIdAsync(id);
+        if (existing == null) return (false, "Pokémon non trouvé.", null);
 
- existing.Title = dto.Title.Trim();
- existing.Description = dto.Description.Trim();
- existing.Status = (RequestStatus)dto.Status;
+        // Mise à jour des propriétés
+        existing.Name = dto.Name.Trim();
+        existing.Type = dto.Type;
+        existing.Type2 = dto.Type2;
+        existing.SubEvolution = dto.PreEvolution?.Trim();
+        existing.Evolution = dto.Evolution?.Trim();
+        existing.MegaEvolution = dto.MegaEvolution?.Trim();
+        existing.Region = dto.Region.Trim();
+        existing.Generation = dto.Generation;
+        existing.Image = dto.Image.Trim();
 
- // Business rule: set CompletedAt exactly once
- if (existing.Status == RequestStatus.Completed && existing.CompletedAt == null)
-        existing.CompletedAt = DateTime.UtcNow;
+        var updated = await _repo.UpdateAsync(existing);
+        return updated == null ? (false, "La mise à jour a échoué.", null) : (true, "", ToDto(updated));
+    }
 
- // If status moves away from Completed, clear it
- if (existing.Status != RequestStatus.Completed)
-     existing.CompletedAt = null;
+    public async Task<bool> DeleteAsync(int id) => await _repo.DeleteAsync(id);
 
- var updated = await _repo.UpdateAsync(existing);
- return updated == null ? (false, "Update failed.", null) : (true, "", ToDto(updated));
- }
-
-     public async Task<bool> DeleteAsync(int id)
-        => await _repo.DeleteAsync(id);
-
-    // ── Private helper ──────────────────────────────
-    private static ServiceRequestDto ToDto(ServiceRequest e)
-        => new ServiceRequestDto(
+    // ── Mapping Privé (Le traducteur Entity -> DTO) ────────────────────────
+    private static PokemonDto ToDto(Pokemon e)
+        => new PokemonDto(
             e.Id,
-            e.Title,
-            e.Description,
-            (int)e.Status,
-            e.CreatedAt,
-            e.CompletedAt
+            e.Name,
+            e.Type,
+            e.Type2,
+            e.SubEvolution,
+            e.Evolution,
+            e.MegaEvolution,
+            e.Region,
+            e.Generation,
+            e.Image
         );
 }
-

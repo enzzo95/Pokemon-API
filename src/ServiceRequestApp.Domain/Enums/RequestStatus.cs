@@ -1,9 +1,19 @@
 namespace ServiceRequestApp.Domain.Enums;
-public enum RequestStatus
+public enum PokemonType
 {
-    Open,
-    Pending,
-    InProgress,
-    Completed,
-    Cancelled
+    Normal,
+    Fire,
+    Water,
+    Grass,
+    Electric,
+    Ice,
+    Fighting,
+    Poison,
+    Ground,
+    Flying,
+    Psychic,
+    Bug,
+    Rock,
+    Ghost,
+    Dragon,
 }

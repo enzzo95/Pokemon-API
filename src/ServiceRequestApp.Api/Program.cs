@@ -17,15 +17,15 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 );
 
 // DI registrations — all Scoped
-builder.Services.AddScoped<IServiceRequestRepository,
-                          ServiceRequestRepository>();
-builder.Services.AddScoped<IServiceRequestService,
-                          ServiceRequestService>();
+builder.Services.AddScoped<IPokemonRepository,
+                          PokemonRepository>();
+builder.Services.AddScoped<IPokemonRepository,
+                          PokemonRepository>();
 
 var app = builder.Build();
 
 app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
 
-app.MapServiceRequestEndpoints();
+app.MapPokemonEndpoints();
 
 app.Run();

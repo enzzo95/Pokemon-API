@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GITHUB\\ServiceRequestApp\\src\\ServiceRequestApp.Domain\\ServiceRequestApp.Domain.csproj": {}
+    "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Domain\\ServiceRequestApp.Domain.csproj": {}
   },
   "projects": {
-    "C:\\GITHUB\\ServiceRequestApp\\src\\ServiceRequestApp.Domain\\ServiceRequestApp.Domain.csproj": {
+    "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Domain\\ServiceRequestApp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GITHUB\\ServiceRequestApp\\src\\ServiceRequestApp.Domain\\ServiceRequestApp.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Domain\\ServiceRequestApp.Domain.csproj",
         "projectName": "ServiceRequestApp.Domain",
-        "projectPath": "C:\\GITHUB\\ServiceRequestApp\\src\\ServiceRequestApp.Domain\\ServiceRequestApp.Domain.csproj",
-        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\GITHUB\\ServiceRequestApp\\src\\ServiceRequestApp.Domain\\obj\\",
+        "projectPath": "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Domain\\ServiceRequestApp.Domain.csproj",
+        "packagesPath": "C:\\Users\\soler\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\soler\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
