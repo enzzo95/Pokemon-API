@@ -26,7 +26,6 @@ public class PokemonService : IPokemonService
 
     public async Task<(bool ok, string error, PokemonDto? created)> CreateAsync(CreatePokemonDto dto) 
     {
-        // On utilise le validateur spécifique aux Pokémon
         var (ok, error) = PokemonValidators.Validate(dto);
         if (!ok) return (false, error, null);
 

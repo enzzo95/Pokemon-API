@@ -4,8 +4,14 @@ using ServiceRequestApp.Application.Interfaces;
 using ServiceRequestApp.Infrastructure.Data;
 using ServiceRequestApp.Infrastructure.Repositories;
 using ServiceRequestApp.Service.Services;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -19,8 +25,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // DI registrations — all Scoped
 builder.Services.AddScoped<IPokemonRepository,
                           PokemonRepository>();
-builder.Services.AddScoped<IPokemonRepository,
-                          PokemonRepository>();
+builder.Services.AddScoped<IPokemonService,
+                            PokemonService>();
 
 var app = builder.Build();
 

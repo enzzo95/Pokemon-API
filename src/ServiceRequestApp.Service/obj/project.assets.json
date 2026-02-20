@@ -45,24 +45,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\edenv\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\soler\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\edenv\\Documents\\Modern_appli_dev_C#\\Pokemon-API\\src\\ServiceRequestApp.Service\\ServiceRequestApp.Service.csproj",
+      "projectUniqueName": "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Service\\ServiceRequestApp.Service.csproj",
       "projectName": "ServiceRequestApp.Service",
-      "projectPath": "C:\\Users\\edenv\\Documents\\Modern_appli_dev_C#\\Pokemon-API\\src\\ServiceRequestApp.Service\\ServiceRequestApp.Service.csproj",
-      "packagesPath": "C:\\Users\\edenv\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\edenv\\Documents\\Modern_appli_dev_C#\\Pokemon-API\\src\\ServiceRequestApp.Service\\obj\\",
+      "projectPath": "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Service\\ServiceRequestApp.Service.csproj",
+      "packagesPath": "C:\\Users\\soler\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Service\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\edenv\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\soler\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -76,8 +71,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\edenv\\Documents\\Modern_appli_dev_C#\\Pokemon-API\\src\\ServiceRequestApp.Application\\ServiceRequestApp.Application.csproj": {
-              "projectPath": "C:\\Users\\edenv\\Documents\\Modern_appli_dev_C#\\Pokemon-API\\src\\ServiceRequestApp.Application\\ServiceRequestApp.Application.csproj"
+            "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Application\\ServiceRequestApp.Application.csproj": {
+              "projectPath": "C:\\Users\\soler\\Desktop\\Pokemon-API\\src\\ServiceRequestApp.Application\\ServiceRequestApp.Application.csproj"
             }
           }
         }

@@ -16,7 +16,7 @@ public class AppDbContext : DbContext {
                               .IsRequired()
                               .HasMaxLength(30);
                        entity.Property(e => e.Type)
-                             .HasConversion<string>() 
+                              .HasConversion<string>() 
                              .IsRequired();
                        entity.Property(e => e.Type2)
                              .HasConversion<string>() 

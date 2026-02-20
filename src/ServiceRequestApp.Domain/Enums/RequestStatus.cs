@@ -16,4 +16,5 @@ public enum PokemonType
     Rock,
     Ghost,
     Dragon,
+    Fairy
 }
